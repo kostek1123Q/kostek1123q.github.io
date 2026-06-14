@@ -1,28 +1,32 @@
-function loadCategory(){
+function loadCategoryPage(){
 
+const category = new URLSearchParams(window.location.search).get("c");
 const articles = document.querySelectorAll("[data-category]");
 const container = document.getElementById("categoryList");
 
 container.innerHTML = "";
 
-articles.forEach(a => {
+articles.forEach(el => {
 
-const title = a.querySelector("h1")?.innerText || "Bez tytułu";
-const category = a.dataset.category;
+const cat = el.dataset.category;
+const title = el.dataset.title || el.querySelector("h1")?.innerText;
+const file = el.getAttribute("data-file");
 
-if(category === "postacie"){
-    container.innerHTML += `
-        <div class="entry">
-            <h2>${title}</h2>
-            <a class="button" href="${title.toLowerCase()}.html">
-                Otwórz
-            </a>
-        </div>
-    `;
+if(cat === category){
+
+container.innerHTML += `
+<div class="entry">
+<h3>${title}</h3>
+<a class="button" href="${file}">Otwórz</a>
+</div>
+`;
+
 }
 
 });
 
 }
 
-loadCategory();
+if(document.getElementById("categoryList")){
+loadCategoryPage();
+}
