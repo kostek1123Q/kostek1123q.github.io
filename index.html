@@ -3,241 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ohuelipedia</title>
-
-<style>
-:root{
-    --bg:#f6f6f6;
-    --border:#a2a9b1;
-    --text:#202122;
-    --link:#0645ad;
-    --header:#eaecf0;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:var(--bg);
-    color:var(--text);
-}
-
-.header{
-    background:white;
-    border-bottom:1px solid var(--border);
-    padding:15px 30px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.logo{
-    font-size:32px;
-    font-weight:bold;
-    color:#1f2937;
-}
-
-.logo span{
-    color:#3366cc;
-}
-
-.search input{
-    width:300px;
-    padding:8px 12px;
-    border:1px solid var(--border);
-}
-
-.layout{
-    display:flex;
-    min-height:calc(100vh - 70px);
-}
-
-.sidebar{
-    width:230px;
-    background:#fff;
-    border-right:1px solid var(--border);
-    padding:20px;
-}
-
-.sidebar h3{
-    margin-bottom:10px;
-    border-bottom:1px solid var(--border);
-    padding-bottom:5px;
-}
-
-.sidebar ul{
-    list-style:none;
-}
-
-.sidebar li{
-    margin:8px 0;
-}
-
-.sidebar a{
-    color:var(--link);
-    text-decoration:none;
-}
-
-.sidebar a:hover{
-    text-decoration:underline;
-}
-
-.content{
-    flex:1;
-    padding:30px;
-}
-
-.article{
-    background:white;
-    border:1px solid var(--border);
-    padding:25px;
-}
-
-.article h1{
-    font-size:38px;
-    margin-bottom:15px;
-    border-bottom:1px solid var(--border);
-    padding-bottom:10px;
-}
-
-.article h2{
-    margin-top:30px;
-    margin-bottom:10px;
-    border-bottom:1px solid #ddd;
-    padding-bottom:5px;
-}
-
-.article p{
-    line-height:1.7;
-    margin-bottom:15px;
-}
-
-.notice{
-    background:#f8f9fa;
-    border:1px solid var(--border);
-    padding:15px;
-    margin:20px 0;
-}
-
-.featured{
-    border:1px solid var(--border);
-    background:#f8f9fa;
-    padding:20px;
-    margin-top:20px;
-}
-
-.featured-title{
-    font-size:22px;
-    margin-bottom:10px;
-}
-
-.button{
-    display:inline-block;
-    margin-top:15px;
-    background:#3366cc;
-    color:white;
-    text-decoration:none;
-    padding:12px 20px;
-    border-radius:4px;
-    font-weight:bold;
-}
-
-.button:hover{
-    background:#254e9b;
-}
-
-.footer{
-    margin-top:30px;
-    font-size:14px;
-    color:#666;
-}
-</style>
+<title>Ohuelopedia</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="header">
     <div class="logo">
-        Ohueli<span>pedia</span>
-    </div>
-
-    <div class="search">
-        <input type="text" placeholder="Przeszukaj Ohuelipedię">
+        <a href="index.html">Ohuelo<span>pedia</span></a>
     </div>
 </header>
 
-<div class="layout">
+<div class="content">
 
-    <aside class="sidebar">
-        <h3>Nawigacja</h3>
-        <ul>
-            <li><a href="#">Strona główna</a></li>
-            <li><a href="shibl.html">Shibl</a></li>
-            <li><a href="#">O projekcie</a></li>
-            <li><a href="#">Losowy artykuł</a></li>
-        </ul>
+    <div class="article">
 
-        <h3 style="margin-top:25px;">Statystyki</h3>
-        <ul>
-            <li>Artykuły: 1</li>
-            <li>Kategorie: 1</li>
-            <li>Wersja: 0.1</li>
-        </ul>
-    </aside>
+        <h1>Strona główna</h1>
 
-    <main class="content">
+        <div class="notice">
+            <strong>Witamy w Ohuelopedii</strong><br>
+            Encyklopedii dokumentującej wydarzenia, postacie, miejsca i lore uniwersum Ohueli.
+        </div>
 
-        <article class="article">
+        <p>
+            Ohuelopedia jest niezależną wiki tworzoną przez społeczność.
+            Jej celem jest uporządkowanie wiedzy związanej z uniwersum Ohueli
+            oraz zachowanie najważniejszych wydarzeń i historii.
+        </p>
 
-            <h1>Strona główna</h1>
+        <h2>Rozpocznij przeglądanie</h2>
 
-            <div class="notice">
-                <strong>Witamy w Ohuelipedii</strong><br>
-                Encyklopedii dokumentującej postacie, wydarzenia, lore,
-                memy i historię uniwersum Ohueli.
-            </div>
-
+        <div class="entry">
             <p>
-                <b>Ohuelipedia</b> jest niezależną wiki tworzoną przez społeczność.
-                Jej celem jest zachowanie i uporządkowanie wiedzy dotyczącej
-                najważniejszych wydarzeń, postaci oraz wątków związanych
-                z uniwersum Ohueli.
+                Wszystkie artykuły i wpisy zgromadzone w jednym miejscu.
             </p>
 
-            <p>
-                Projekt inspirowany jest klasycznymi encyklopediami internetowymi
-                i ma stanowić centralne źródło informacji dla obecnych oraz
-                przyszłych czytelników.
-            </p>
+            <a href="spis.html" class="button">
+                Przejdź do spisu treści →
+            </a>
+        </div>
 
-            <h2>Polecany artykuł</h2>
+        <div class="footer">
+            Ohuelopedia • Wersja 0.1
+        </div>
 
-            <div class="featured">
-                <div class="featured-title">
-                    Shibl
-                </div>
-
-                <p>
-                    Pierwszy opisany wątek w historii Ohuelipedii.
-                    Artykuł zawiera podstawowe informacje, historię
-                    oraz najważniejsze wydarzenia związane z tematem.
-                </p>
-
-                <a class="button" href="shibl.html">
-                    Otwórz artykuł →
-                </a>
-            </div>
-
-            <div class="footer">
-                Ostatnia aktualizacja: czerwiec 2026
-            </div>
-
-        </article>
-
-    </main>
+    </div>
 
 </div>
 
