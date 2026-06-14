@@ -13,6 +13,10 @@
 }
 
 body{
+    cursor: url("cursor.png"), auto;
+}
+
+body{
     font-family: "Tahoma", "Verdana", sans-serif;
     background: linear-gradient(to bottom, #3a6ea5, #c3d9ff);
     color:var(--xp-text);
