@@ -54,25 +54,69 @@ Brak
 <script>
 let score = 0;
 
+let startTime = null;
+let timerInterval = null;
+let finished = false;
+
 const scoreEl = document.getElementById("score");
 const achievementEl = document.getElementById("achievement");
+const timerEl = document.getElementById("timer");
+
+function updateTimer() {
+
+    if (!startTime || finished) return;
+
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+
+    const hours = Math.floor(elapsed / 3600);
+    const minutes = Math.floor((elapsed % 3600) / 60);
+    const seconds = elapsed % 60;
+
+    timerEl.textContent =
+        String(hours).padStart(2, "0") + ":" +
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
+}
 
 document.getElementById("shibl").onclick = function() {
+
+    if (!startTime) {
+
+        startTime = Date.now();
+
+        timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    if (finished) return;
 
     score++;
 
     scoreEl.textContent = score;
 
-    if(score >= 1000)
-        achievementEl.textContent = "Młody Jeleń";
+    if(score >= 1000) {
+
+        finished = true;
+
+        clearInterval(timerInterval);
+
+        achievementEl.textContent =
+            "Młody Jeleń — 1000 kliknięć osiągnięte";
+
+        return;
+    }
+
     else if(score >= 500)
         achievementEl.textContent = "Widzieliście może zdjęcie Shibla?";
+
     else if(score >= 250)
         achievementEl.textContent = "Otyła Trójka";
+
     else if(score >= 100)
         achievementEl.textContent = "Członek Wielkiej Piątki";
+
     else if(score >= 50)
         achievementEl.textContent = "Znawca Ohueli";
+
     else if(score >= 10)
         achievementEl.textContent = "Początkujący obserwator";
 };
