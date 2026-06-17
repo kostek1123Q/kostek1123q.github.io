@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Shibl Clicker</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.png">
+</head>
+<body>
+
+<header class="header">
+<div class="logo">
+<a href="index.html">Ohuelo<span>pedia</span></a>
+</div>
+</header>
+
+<div class="content">
+
+<div class="article">
+
+<h1>Shibl Clicker</h1>
+
+<div class="notice">
+Klikaj w Shibla i zdobywaj Punkty Shibla.
+</div>
+
+<h2>Punkty Shibla</h2>
+
+<p id="score" style="font-size:32px;">
+0
+</p>
+
+<div style="text-align:center;">
+
+<img
+id="shibl"
+src="images/shibl.jpg"
+alt="Shibl"
+style="width:300px; cursor:pointer;"
+>
+
+</div>
+
+<h2>Osiągnięcie</h2>
+
+<p id="achievement">
+Brak
+</p>
+
+</div>
+
+</div>
+
+<script>
+let score = 0;
+
+const scoreEl = document.getElementById("score");
+const achievementEl = document.getElementById("achievement");
+
+document.getElementById("shibl").onclick = function() {
+
+    score++;
+
+    scoreEl.textContent = score;
+
+    if(score >= 1000)
+        achievementEl.textContent = "Młody Jeleń";
+    else if(score >= 500)
+        achievementEl.textContent = "Widzieliście może zdjęcie Shibla?";
+    else if(score >= 250)
+        achievementEl.textContent = "Otyła Trójka";
+    else if(score >= 100)
+        achievementEl.textContent = "Członek Wielkiej Piątki";
+    else if(score >= 50)
+        achievementEl.textContent = "Znawca Ohueli";
+    else if(score >= 10)
+        achievementEl.textContent = "Początkujący obserwator";
+};
+</script>
+
+<script src="copy-source.js"></script>
+
+</body>
+</html>
