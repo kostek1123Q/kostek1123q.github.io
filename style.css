@@ -148,3 +148,50 @@ body{
     text-align:center;
     color:#333;
 }
+
+body.dark {
+    background: #000000;
+    color: #00ff66;
+    font-family: "Courier New", monospace;
+}
+
+/* neonowe ramki jak terminal */
+body.dark .article,
+body.dark .entry,
+body.dark .notice,
+body.dark .category-box {
+    background: #050505;
+    border: 1px solid #00ff66;
+    box-shadow: 0 0 10px #00ff66;
+}
+
+/* linki */
+body.dark a {
+    color: #00ff66;
+}
+
+body.dark .button {
+    background: black;
+    border: 1px solid #00ff66;
+    color: #00ff66;
+}
+
+body.dark .button:hover {
+    box-shadow: 0 0 12px #00ff66;
+}
+
+/* logo matrix glow */
+body.dark .logo a {
+    color: #00ff66;
+    text-shadow: 0 0 10px #00ff66;
+}
+
+/* fake CMD feel */
+body.dark::before {
+    content: "KALI LINUX TERMINAL // OHUELI SYSTEM ACTIVE";
+    display: block;
+    padding: 10px;
+    font-size: 12px;
+    color: #00ff66;
+    border-bottom: 1px solid #00ff66;
+}
