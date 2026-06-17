@@ -188,7 +188,7 @@ body.dark .logo a {
 
 /* fake CMD feel */
 body.dark::before {
-    content: "KALI LINUX TERMINAL // OHUELI SYSTEM ACTIVE";
+    content: "OHUELI SYSTEM ACTIVE";
     display: block;
     padding: 10px;
     font-size: 12px;
